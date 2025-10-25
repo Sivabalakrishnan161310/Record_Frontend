@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import profileImage from './Img.jpg';
 import {
   Select,
   SelectContent,
@@ -26,12 +27,15 @@ import {
   List,
   Menu,
   X,
+  ChevronDown,
 } from 'lucide-react';
 import SupportDialog from '@/components/SupportDialog';
 
 export default function Dashboard() {
   const [supportOpen, setSupportOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [jobsExpanded, setJobsExpanded] = useState(false);
+  const [toolsExpanded, setToolsExpanded] = useState(false);
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
@@ -94,58 +98,72 @@ export default function Dashboard() {
           </a>
 
           <div className="space-y-1">
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+            <button
+              onClick={() => setJobsExpanded(!jobsExpanded)}
+              className="flex items-center justify-between px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
             >
-              <Briefcase className="w-5 h-5" />
-              <span className="text-sm font-medium">Jobs</span>
-            </a>
+              <div className="flex items-center gap-3">
+                <Briefcase className="w-5 h-5" />
+                <span className="text-sm font-medium">Jobs</span>
+              </div>
+              <ChevronDown className={`w-4 h-4 transition-transform ${jobsExpanded ? 'rotate-180' : ''}`} />
+            </button>
 
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
-            >
-              Offers
-            </a>
+            {jobsExpanded && (
+              <div className="ml-8 space-y-1">
+                <a
+                  href="#"
+                  className="block px-3 py-2 text-sm text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+                >
+                  Offers
+                </a>
 
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
-            >
-              Applied
-            </a>
+                <a
+                  href="#"
+                  className="block px-3 py-2 text-sm text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+                >
+                  Applied
+                </a>
+              </div>
+            )}
           </div>
 
           <div className="space-y-1">
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+            <button
+              onClick={() => setToolsExpanded(!toolsExpanded)}
+              className="flex items-center justify-between px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
             >
-              <Settings className="w-5 h-5" />
-              <span className="text-sm font-medium">Tools</span>
-            </a>
+              <div className="flex items-center gap-3">
+                <Settings className="w-5 h-5" />
+                <span className="text-sm font-medium">Tools</span>
+              </div>
+              <ChevronDown className={`w-4 h-4 transition-transform ${toolsExpanded ? 'rotate-180' : ''}`} />
+            </button>
 
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
-            >
-              YouTube to Course
-            </a>
+            {toolsExpanded && (
+              <div className="ml-8 space-y-1">
+                <a
+                  href="#"
+                  className="block px-3 py-2 text-sm text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+                >
+                  YouTube to Course
+                </a>
 
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
-            >
-              <span className="text-sm font-medium hover:font-semibold">One Click Resume</span>
-            </a>
+                <a
+                  href="#"
+                  className="block px-3 py-2 text-sm text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+                >
+                  One Click Resume
+                </a>
 
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
-            >
-            <span className="text-sm font-medium hover:font-semibold">AI Assessment</span>
-            </a>
+                <a
+                  href="#"
+                  className="block px-3 py-2 text-sm text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
+                >
+                  AI Assessment
+                </a>
+              </div>
+            )}
           </div>
         </nav>
 
@@ -161,7 +179,7 @@ export default function Dashboard() {
 
           <a
             href="#"
-            className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:bg-orange-50 rounded-lg transition-colors"
+            className="flex items-center gap-3 px-3 py-2.5 w-full text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
           >
             <Send className="w-5 h-5" />
             <span className="text-sm font-medium">Feedback</span>
@@ -229,7 +247,7 @@ export default function Dashboard() {
 
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
               <img
-                src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=100"
+                src={profileImage}
                 alt="User"
                 className="w-full h-full object-cover"
               />
@@ -274,12 +292,12 @@ export default function Dashboard() {
                 <div className="flex flex-row lg:flex-col items-center gap-4 lg:gap-0">
                   <div className="w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden lg:mb-4 bg-gray-200 flex-shrink-0">
                     <img
-                      src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400"
+                      src={profileImage}
                       alt="Profile"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h2 className="text-lg sm:text-xl font-bold text-gray-900">Thilak</h2>
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900">Siva</h2>
                 </div>
 
                 <nav className="space-y-1 hidden lg:block">
@@ -291,31 +309,32 @@ export default function Dashboard() {
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg text-sm"
+                    className="block px-4 py-2.5 text-gray-500 hover:text-black rounded-lg text-sm transition-colors"
+                    //className="block px-3 py-2 text-sm text-gray-500 bg-white hover:text-black rounded-lg transition-colors"
                   >
                     Education
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg text-sm"
+                    className="block px-4 py-2.5 text-gray-500 hover:text-black rounded-lg text-sm transition-colors"
                   >
                     Work Experiences
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg text-sm"
+                    className="block px-4 py-2.5 text-gray-500 hover:text-black rounded-lg text-sm transition-colors"
                   >
                     Licenses & Certifications
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg text-sm"
+                    className="block px-4 py-2.5 text-gray-500 hover:text-black rounded-lg text-sm transition-colors"
                   >
                     Projects
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg text-sm"
+                    className="block px-4 py-2.5 text-gray-500 hover:text-black rounded-lg text-sm transition-colors"
                   >
                     Other Activities
                   </a>
@@ -353,7 +372,7 @@ export default function Dashboard() {
                       </label>
                       <Input
                         type="text"
-                        value="Thilak"
+                        value="Siva"
                         className="h-12 bg-gray-50 border-gray-200 text-gray-900"
                       />
                     </div>
@@ -364,7 +383,7 @@ export default function Dashboard() {
                       </label>
                       <Input
                         type="email"
-                        value="thilak.pandian18@gmail.com"
+                        value="sivabalakrishnan24122003@gmail.com"
                         className="h-12 bg-gray-50 border-gray-200 text-gray-400"
                         disabled
                       />
@@ -376,7 +395,7 @@ export default function Dashboard() {
                       </label>
                       <Input
                         type="text"
-                        value="2003-04-18"
+                        value="2003-12-24"
                         className="h-12 bg-gray-50 border-gray-200 text-gray-900"
                       />
                     </div>
@@ -409,7 +428,7 @@ export default function Dashboard() {
                         />
                         <Input
                           type="tel"
-                          value="8667736358"
+                          value="6369927041"
                           className="flex-1 h-12 bg-gray-50 border-gray-200 text-gray-900"
                         />
                       </div>

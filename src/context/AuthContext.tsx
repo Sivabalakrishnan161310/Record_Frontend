@@ -43,7 +43,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const login = async (email: string, password: string) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://record-backend-i07yp4b92-sivas-projects-9f3fcd97.vercel.app';
       const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -71,7 +71,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const signup = async (name: string, email: string, password: string) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://record-backend-i07yp4b92-sivas-projects-9f3fcd97.vercel.app';
       const response = await fetch(`${API_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
@@ -99,7 +99,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const googleLogin = async (credential: string) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://record-backend-i07yp4b92-sivas-projects-9f3fcd97.vercel.app';
       const response = await fetch(`${API_URL}/api/auth/google`, {
         method: 'POST',
         headers: {

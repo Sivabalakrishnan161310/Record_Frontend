@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Large files
+*.pt
+*.pth
+*.bin
+*.onnx
+*.pb
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*

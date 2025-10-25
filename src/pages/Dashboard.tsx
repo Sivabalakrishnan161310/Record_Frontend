@@ -261,7 +261,7 @@ export default function Dashboard() {
               <div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-2">
                   <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Basic Profile</h1>
-                  <Button variant="ghost" size="lg" className="text-white hover:text-gray-900">
+                  <Button variant="ghost" size="lg" className="text-white hover:text-black bg-black hover:bg-gray-300">
                     <PlayCircle className="w-4 h-4 mr-1" />
                     How it works
                   </Button>

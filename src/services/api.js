@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base API URL
-const API_URL = import.meta.env.VITE_API_URL || 'https://record-backend-psi.vercel.app/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://record-backend-6hiu.onrender.com/api';
 
 // Create axios instance
 const api = axios.create({

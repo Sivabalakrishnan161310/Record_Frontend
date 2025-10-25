@@ -87,7 +87,7 @@ export default function SupportDialog({ open, onOpenChange }: SupportDialogProps
         filesCount: files.length
       });
 
-      const response = await fetch('https://record-backend-psi.vercel.app/api/support', {
+      const response = await fetch('https://record-backend-6hiu.onrender.com/api/support', {
         method: 'POST',
         body: formData,
         // Note: Don't set Content-Type header, browser will set it with boundary

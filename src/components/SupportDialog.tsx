@@ -71,7 +71,7 @@ export default function SupportDialog({ open, onOpenChange }: SupportDialogProps
       formData.append('subject', subject);
       formData.append('description', description);
       formData.append('phoneNumber', phoneNumber);
-      formData.append('email', userEmail);
+      formData.append('email', userEmail || '');
 
       // Append files
       files.forEach(file => {

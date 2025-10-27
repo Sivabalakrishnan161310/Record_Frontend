@@ -372,8 +372,9 @@ export default function Dashboard() {
                       </label>
                       <Input
                         type="text"
-                        value="Siva"
+                        value=""
                         className="h-12 bg-gray-50 border-gray-200 text-gray-900"
+                        
                       />
                     </div>
 
